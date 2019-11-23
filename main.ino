@@ -28,16 +28,18 @@ void loop()
     knobValue = analogRead(knobPin);
 
     int val = map(knobValue, 30, 1000, 0, 255);
+    val = constrain(val, 0, 255);
 
     // Serial.println(knobValue);
 
     sunRise(val);
+    // pollution(val);
 
     // loop_bme680();
     // loop_screen();
     // loop_scenes();
     // loop_leds();
 
-    delay(10);
+    // delay(10);
 }
 

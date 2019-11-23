@@ -10,8 +10,10 @@
 // Define the array of leds
 CRGB leds[NUM_LEDS];
 
+#include "./scenes/helpers.h"
 #include "./scenes/curtains.h"
 #include "./scenes/sunRise.h"
+#include "./scenes/pollution.h"
 
 void setup_leds()
 {
