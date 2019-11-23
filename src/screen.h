@@ -30,7 +30,7 @@
 #define OLED_RESET 4 // Reset pin # (or -1 if sharing Arduino reset pin)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-void screen_setup()
+void setup_screen()
 {
     Serial.begin(9600);
 
@@ -41,4 +41,30 @@ void screen_setup()
         for (;;)
             ; // Don't proceed, loop forever
     }
+
+    display.setTextSize(1);              // Normal 1:1 pixel scale
+    display.setTextColor(SSD1306_WHITE); // Draw white text
+
+        display.clearDisplay();
+    display.setCursor(0, 0); // Start at top-left corner
+    display.println(F("CITY SUNRISE"));
+    display.display();
+
+}
+
+void loop_screen() {
+    display.clearDisplay();
+    display.setCursor(0, 0); // Start at top-left corner
+    display.println(millis());
+
+    sensorValue = analogRead(sensorPin);
+    display.println(sensorValue);
+
+    // buttonState = digitalRead(buttonPin);
+    // display.println(buttonState);
+
+    display.print(F("Temp: "));
+    display.println(bme.temperature);
+
+    display.display();
 }

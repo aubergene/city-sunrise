@@ -1,6 +1,5 @@
 #include <FastLED.h>
 #include "src/gamma8.h"
-#include "src/screen.h"
 
 // How many leds in your strip?
 #define NUM_LEDS 300
@@ -15,7 +14,7 @@ CRGB leds[NUM_LEDS];
 int cursor = 0;
 int scene = 0;
 int startedScene = 0;
-const int sceneLen = 2000;
+const int sceneLen = 5000;
 
 const int buttonPin = 2; // the number of the pushbutton pin
 int buttonState = 0; // variable for reading the pushbutton status
@@ -24,6 +23,10 @@ int buttonPushStart = 0;
 const int sensorPin = A0; // select the input pin for the potentiometer
 int sensorValue = 0;  // variable to store the value coming from the sensor
 
+#include "src/bme680.h"
+#include "src/screen.h"
+
+
 void setup()
 {
     pinMode(buttonPin, INPUT);
@@ -31,12 +34,10 @@ void setup()
     Serial.begin(9600);
     Serial.println("resetting");
     LEDS.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS);
-    LEDS.setBrightness(1200);
+    LEDS.setBrightness(255);
 
-    screen_setup();
-
-    display.setTextSize(1);              // Normal 1:1 pixel scale
-    display.setTextColor(SSD1306_WHITE); // Draw white text
+    setup_screen();
+    setup_bme680();
 }
 
 void fadeall()
@@ -49,8 +50,9 @@ void fadeall()
 
 void loop()
 {
-    display.clearDisplay();
-    display.setCursor(0, 0); // Start at top-left corner
+    loop_bme680();
+    loop_screen();
+
 
     if (millis() > startedScene + sceneLen)
     {
@@ -82,23 +84,12 @@ void loop()
         break;
     }
 
-    display.println(millis());
-
-    sensorValue = analogRead(sensorPin);
-    display.println(sensorValue);
-
-    buttonState = digitalRead(buttonPin);
-    display.println(buttonState);
-
     // if (buttonState == HIGH && !buttonPushStart && buttonPushStart - millis() < 25) {
     //     buttonPushStart = millis();
     //     scene++;
     // }
 
     // if (buttonState == HIGH && !buttonPushStart && buttonPushStart - millis() < 25) {
-
-
-    display.display();
 }
 
 void redGreenYellow()
