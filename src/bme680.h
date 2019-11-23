@@ -33,7 +33,7 @@ Adafruit_BME680 bme; // I2C
 
 void setup_bme680() {
   // Serial.begin(9600);
-  while (!Serial);
+  // while (!Serial);
   Serial.println(F("BME680 test"));
 
   if (!bme.begin(0x76)) {

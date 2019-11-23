@@ -27,14 +27,12 @@
 #define SCREEN_HEIGHT 32 // OLED display height, in pixels
 
 // Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
-#define OLED_RESET 4 // Reset pin # (or -1 if sharing Arduino reset pin)
+#define OLED_RESET -1 // Reset pin # (or -1 if sharing Arduino reset pin)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 void setup_screen()
 {
-    Serial.begin(9600);
-
-    // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
+     // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
     if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
     { // Address 0x3C for 128x32
         Serial.println(F("SSD1306 allocation failed"));
@@ -45,20 +43,16 @@ void setup_screen()
     display.setTextSize(1);              // Normal 1:1 pixel scale
     display.setTextColor(SSD1306_WHITE); // Draw white text
 
-        display.clearDisplay();
+    display.clearDisplay();
     display.setCursor(0, 0); // Start at top-left corner
     display.println(F("CITY SUNRISE"));
     display.display();
-
 }
 
 void loop_screen() {
     display.clearDisplay();
     display.setCursor(0, 0); // Start at top-left corner
     display.println(millis());
-
-    sensorValue = analogRead(sensorPin);
-    display.println(sensorValue);
 
     // buttonState = digitalRead(buttonPin);
     // display.println(buttonState);
