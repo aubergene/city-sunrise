@@ -14,6 +14,7 @@ CRGB leds[NUM_LEDS];
 #include "./scenes/curtains.h"
 #include "./scenes/sunRise.h"
 #include "./scenes/pollution.h"
+#include "./scenes/sensorTemp.h"
 
 void setup_leds()
 {

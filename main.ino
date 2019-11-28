@@ -1,8 +1,8 @@
 const int buttonPin = 2; // the number of the pushbutton pin
-int buttonState = 0; // variable for reading the pushbutton status
+int buttonState = 0;     // variable for reading the pushbutton status
 
 const int knobPin = A0; // select the input pin for the potentiometer
-int knobValue = 0;  // variable to store the value coming from the sensor
+int knobValue = 0;      // variable to store the value coming from the sensor
 
 #include "src/bme680.h"
 #include "src/screen.h"
@@ -17,7 +17,7 @@ void setup()
 
     setup_leds();
     setup_screen();
-    // setup_bme680();
+    setup_bme680();
 }
 
 void loop()
@@ -30,9 +30,14 @@ void loop()
     int val = map(knobValue, 30, 1000, 0, 255);
     val = constrain(val, 0, 255);
 
+    loop_bme680(); // get the reading from the sensor
+
     // Serial.println(knobValue);
 
-    sunRise(val);
+    // sunRise(val);
+    sensorTemp();
+
+    delay(60 * 1000);
     // pollution(val);
 
     // loop_bme680();
@@ -42,4 +47,3 @@ void loop()
 
     // delay(10);
 }
-

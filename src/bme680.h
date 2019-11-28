@@ -31,14 +31,17 @@ Adafruit_BME680 bme; // I2C
 //Adafruit_BME680 bme(BME_CS); // hardware SPI
 //Adafruit_BME680 bme(BME_CS, BME_MOSI, BME_MISO,  BME_SCK);
 
-void setup_bme680() {
+void setup_bme680()
+{
   // Serial.begin(9600);
   // while (!Serial);
   Serial.println(F("BME680 test"));
 
-  if (!bme.begin(0x76)) {
+  if (!bme.begin(0x76))
+  {
     Serial.println("Could not find a valid BME680 sensor, check wiring!");
-    while (1);
+    while (1)
+      ;
   }
 
   // Set up oversampling and filter initialization
@@ -49,35 +52,49 @@ void setup_bme680() {
   bme.setGasHeater(320, 150); // 320*C for 150 ms
 }
 
-void loop_bme680() {
-  if (!bme.performReading()) {
+void loop_bme680()
+{
+  if (!bme.performReading())
+  {
     Serial.println("Failed to perform reading :(");
     return;
   }
-  Serial.print("Temperature = ");
-  Serial.print(bme.temperature);
-  Serial.println(" *C");
 
-  Serial.print("Temperature = ");
   Serial.print(bme.temperature);
-  Serial.println(" *C");
-
-  Serial.print("Pressure = ");
+  Serial.print("\t");
   Serial.print(bme.pressure / 100.0);
-  Serial.println(" hPa");
-
-  Serial.print("Humidity = ");
+  Serial.print("\t");
   Serial.print(bme.humidity);
-  Serial.println(" %");
-
-  Serial.print("Gas = ");
-  Serial.print(bme.gas_resistance / 1000.0);
-  Serial.println(" KOhms");
-
-  Serial.print("Approx. Altitude = ");
+  Serial.print("\t");
   Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
-  Serial.println(" m");
-
+  Serial.print("\t");
+  Serial.print(bme.gas_resistance / 1000.0));
   Serial.println();
-  delay(2000);
+
+  // Serial.print("Temperature = ");
+  // Serial.print(bme.temperature);
+  // Serial.println(" *C");
+
+  // Serial.print("Temperature = ");
+  // Serial.print(bme.temperature);
+  // Serial.println(" *C");
+
+  // Serial.print("Pressure = ");
+  // Serial.print(bme.pressure / 100.0);
+  // Serial.println(" hPa");
+
+  // Serial.print("Humidity = ");
+  // Serial.print(bme.humidity);
+  // Serial.println(" %");
+
+  // Serial.print("Gas = ");
+  // Serial.print(bme.gas_resistance / 1000.0);
+  // Serial.println(" KOhms");
+
+  // Serial.print("Approx. Altitude = ");
+  // Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
+  // Serial.println(" m");
+
+  // Serial.println();
+  // delay(2000);
 }
