@@ -1,29 +1,30 @@
 {
-  "configurations": [
-    {
-      "name": "Mac",
-      "includePath": [
-        "/Users/jburgess29/Library/Arduino15/**",
-        "/Users/jburgess29/Documents/Arduino/**",
-        "${workspaceFolder}/**",
-        "/Users/aubergene/Library/Arduino15/**",
-        "/Users/aubergene/code/arduino/libraries/**",
-        "/Users/aubergene/Documents/Arduino/**"
-      ],
-      "defines": [],
-      "macFrameworkPath": [
-        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"
-      ],
-      "compilerPath": "/usr/bin/clang",
-      "cStandard": "c11",
-      "cppStandard": "c++17",
-      "intelliSenseMode": "clang-x64",
-      "forcedInclude": [
-        "/Users/jburgess29/Library/Arduino15/packages/adafruit/hardware/samd/1.5.4/cores/arduino/Arduino.h",
-        "/Users/jburgess29/Library/Arduino15/packages/adafruit/hardware/samd/1.5.7/cores/arduino/Arduino.h",
-        "/Users/aubergene/Library/Arduino15/packages/adafruit/hardware/samd/1.5.4/cores/arduino/Arduino.h"
-      ]
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "/Users/jburgess29/Library/Arduino15/**",
+                "/Users/jburgess29/Documents/Arduino/**",
+                "${workspaceFolder}/**",
+                "/Users/aubergene/Library/Arduino15/**",
+                "/Users/aubergene/code/arduino/libraries/**",
+                "/Users/aubergene/Documents/Arduino/**",
+                "/Users/jburgess29/Library/Arduino15/packages/adafruit/hardware/samd/1.5.7/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "forcedInclude": [
+                "/Users/jburgess29/Library/Arduino15/packages/adafruit/hardware/samd/1.5.4/cores/arduino/Arduino.h",
+                "/Users/jburgess29/Library/Arduino15/packages/adafruit/hardware/samd/1.5.7/cores/arduino/Arduino.h",
+                "/Users/aubergene/Library/Arduino15/packages/adafruit/hardware/samd/1.5.4/cores/arduino/Arduino.h"
+            ]
+        }
+    ],
+    "version": 4
 }
