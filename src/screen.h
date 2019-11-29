@@ -46,19 +46,21 @@ void setup_screen()
     display.clearDisplay();
     display.setCursor(0, 0); // Start at top-left corner
     display.println(F("CITY SUNRISE"));
+    display.println();
+    display.println(F("Julian Burgess"));
+    display.println(F("Goldsmiths 2019"));
     display.display();
+    delay(1000);
 }
 
 void loop_screen() {
     display.clearDisplay();
     display.setCursor(0, 0); // Start at top-left corner
-    display.println(millis());
 
-    // buttonState = digitalRead(buttonPin);
+    // display.println(millis());
     // display.println(buttonState);
-
-    display.print(F("Temp: "));
-    display.println(bme.temperature);
+    // display.print(F("Temp: "));
+    // display.println(bme.temperature);
 
     display.display();
 }

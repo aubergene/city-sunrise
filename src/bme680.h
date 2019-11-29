@@ -33,9 +33,7 @@ Adafruit_BME680 bme; // I2C
 
 void setup_bme680()
 {
-  // Serial.begin(9600);
-  // while (!Serial);
-  Serial.println(F("BME680 test"));
+  // Serial.println(F("BME680 test"));
 
   if (!bme.begin(0x76))
   {
@@ -71,30 +69,5 @@ void loop_bme680()
   Serial.print(bme.gas_resistance / 1000.0);
   Serial.println();
 
-  // Serial.print("Temperature = ");
-  // Serial.print(bme.temperature);
-  // Serial.println(" *C");
-
-  // Serial.print("Temperature = ");
-  // Serial.print(bme.temperature);
-  // Serial.println(" *C");
-
-  // Serial.print("Pressure = ");
-  // Serial.print(bme.pressure / 100.0);
-  // Serial.println(" hPa");
-
-  // Serial.print("Humidity = ");
-  // Serial.print(bme.humidity);
-  // Serial.println(" %");
-
-  // Serial.print("Gas = ");
-  // Serial.print(bme.gas_resistance / 1000.0);
-  // Serial.println(" KOhms");
-
-  // Serial.print("Approx. Altitude = ");
-  // Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
-  // Serial.println(" m");
-
-  // Serial.println();
-  // delay(2000);
+  delay(10000);
 }
