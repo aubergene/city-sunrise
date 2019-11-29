@@ -22,17 +22,14 @@ void loop()
     display.clearDisplay();
     display.setCursor(0, 0); // Start at top-left corner
 
-    int val = map(knobValue, 50, 1000, 0, 255);
-    val = constrain(val, 0, 255);
-
     loop_button();
     loop_knob(); // get the reading from variable resistor
     loop_scenes(); // get the reading from variable resistor
     // loop_bme680(); // get the reading from the sensor
 
     // display.println(millis());
+    // display.println(knobValue);
     display.println(knobValue);
-    display.println(val);
     display.println(buttonState);
     display.println(scene);
 

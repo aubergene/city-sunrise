@@ -1,4 +1,12 @@
-#define NUM_SCENES 4
+#include "./scenes/helpers.h"
+#include "./scenes/curtains.h"
+#include "./scenes/sunRise.h"
+#include "./scenes/pollution.h"
+#include "./scenes/sensorTemp.h"
+#include "./scenes/seaWaves.h"
+#include "./scenes/redGreenYellow.h"
+
+#define NUM_SCENES 2
 
 int scene = 0;
 int prevScene = -1;
@@ -30,25 +38,27 @@ void loop_scenes()
     //     }
     // }
 
-    // switch (scene)
-    // {
-    // case 0:
-    //     display.println(F("openCurtains"));
-    //     openCurtains();
-    //     break;
-    // case 1:
-    //     display.println(F("seaWaves"));
-    //     seaWaves();
-    //     break;
-    // case 2:
-    //     display.println(F("bounceDot"));
-    //     // bounceDot();
-    //     break;
-    // case 3:
-    //     display.println(F("redGreenYellow"));
-    //     redGreenYellow();
-    //     break;
-    // }
+    switch (scene)
+    {
+    case 0:
+        display.println(F("openCurtains"));
+        // openCurtains();
+        seaWaves();
+        break;
+    case 1:
+        display.println(F("seaWaves"));
+        // seaWaves();
+        redGreenYellow();
+        break;
+    case 2:
+        display.println(F("bounceDot"));
+        // bounceDot();
+        break;
+    case 3:
+        display.println(F("redGreenYellow"));
+        redGreenYellow();
+        break;
+    }
 
     // if (buttonState == HIGH && !buttonPushStart && buttonPushStart - millis() < 25) {
     //     buttonPushStart = millis();

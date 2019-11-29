@@ -34,6 +34,9 @@ void loop_knob()
         }
         knobValue = knobSum / knobNumReadings;
 
+        knobValue = map(knobValue, 200, 1000, 0, 255);
+        knobValue = constrain(knobValue, 0, 255);
+
         // Serial.print("\t val:");
         // Serial.println(knobValue);
     }
