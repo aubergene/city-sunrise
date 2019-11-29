@@ -45,12 +45,18 @@ void setup_screen()
 
     display.clearDisplay();
     display.setCursor(0, 0); // Start at top-left corner
+    display.display();
+    delay(200);
     display.println(F("CITY SUNRISE"));
+    display.display();
+    delay(1000);
     display.println();
     display.println(F("Julian Burgess"));
     display.println(F("Goldsmiths 2019"));
     display.display();
-    delay(1000);
+    delay(2000);
+    display.clearDisplay();
+    display.display();
 }
 
 void loop_screen() {

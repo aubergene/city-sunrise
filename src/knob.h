@@ -1,7 +1,7 @@
 const int knobNumReadings = 16;   // number of readings to average
 const int knobPin = A0;           // select the input pin for the potentiometer
 const int knobReadFrequency = 50; // read every X milliseconds
-int knobValue;                    // variable to store the value coming from the sensor
+int knobValue = 0;                    // variable to store the value coming from the sensor
 int knobValues[knobNumReadings];  // array to store readings
 int knobIndex = 0;                // variable to store our position in the array
 int knobLastReadMillis = 0;       // variable to store our position in the array

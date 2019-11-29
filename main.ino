@@ -1,18 +1,16 @@
-const int buttonPin = 2; // the number of the pushbutton pin
-int buttonState = 0;     // variable for reading the pushbutton status
-
+#include "src/button.h"
 #include "src/knob.h"
 #include "src/bme680.h"
 #include "src/screen.h"
 #include "src/leds.h"
+#include "src/scenes.h"
 
 void setup()
 {
     Serial.begin(9600);
     Serial.println("resetting");
 
-    pinMode(buttonPin, INPUT);
-
+    setup_button();
     setup_knob();
     setup_leds();
     setup_screen();
@@ -27,18 +25,21 @@ void loop()
     int val = map(knobValue, 50, 1000, 0, 255);
     val = constrain(val, 0, 255);
 
+    loop_button();
     loop_knob(); // get the reading from variable resistor
+    loop_scenes(); // get the reading from variable resistor
     // loop_bme680(); // get the reading from the sensor
 
-    display.println(millis());
+    // display.println(millis());
     display.println(knobValue);
     display.println(val);
+    display.println(buttonState);
+    display.println(scene);
+
     // display.println(buttonState);
     // display.print(F("Temp: "));
     // display.println(bme.temperature);
-
     display.display();
-
 
     // sunRise(val);
     // sensorTemp();
@@ -49,5 +50,4 @@ void loop()
     // loop_screen();
     // loop_scenes();
     // loop_leds();
-
 }
