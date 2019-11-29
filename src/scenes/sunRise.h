@@ -1,8 +1,8 @@
-void sunRise(int t)
+void sunRise(int sun)
 {
     const int mid = NUM_LEDS / 2;
 
-    int n = map(t, 0, 255, 0, mid);
+    int n = map(sun, 0, 255, 0, mid);
     n = constrain(n, 0, mid);
 
     FastLED.clear();
@@ -11,7 +11,10 @@ void sunRise(int t)
     // Add to overall brightness as sunrise grows
     int maxV = map(n, 0, mid, 0, 50);
 
-    display.print(F("Knob value: "));
+    display.print(F("sun: "));
+    display.println(sun);
+
+    display.print(F("n: "));
     display.println(n);
 
     display.print(F("maxV: "));
