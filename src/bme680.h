@@ -68,7 +68,7 @@ void loop_bme680()
   Serial.print("\t");
   Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
   Serial.print("\t");
-  Serial.print(bme.gas_resistance / 1000.0));
+  Serial.print(bme.gas_resistance / 1000.0);
   Serial.println();
 
   // Serial.print("Temperature = ");
