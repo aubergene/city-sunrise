@@ -1,3 +1,4 @@
+#include "src/helpers.h"
 #include "src/button.h"
 #include "src/knob.h"
 #include "src/bme680.h"
@@ -24,27 +25,20 @@ void loop()
 
     loop_button();
     loop_knob(); // get the reading from variable resistor
+    loop_bme680(); // get the reading from the sensor
     loop_scenes(); // get the reading from variable resistor
-    // loop_bme680(); // get the reading from the sensor
 
     // display.println(millis());
     // display.println(knobValue);
-    display.println(knobValue);
-    display.println(buttonState);
-    display.println(scene);
+
+    // display.println(knobValue);
+    // display.println(buttonState);
+    // display.println(scene);
 
     // display.println(buttonState);
     // display.print(F("Temp: "));
     // display.println(bme.temperature);
     display.display();
 
-    // sunRise(val);
-    // sensorTemp();
-
     // pollution(val);
-
-    // loop_bme680();
-    // loop_screen();
-    // loop_scenes();
-    // loop_leds();
 }

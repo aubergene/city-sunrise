@@ -10,12 +10,6 @@
 // Define the array of leds
 CRGB leds[NUM_LEDS];
 
-// #include "./scenes/helpers.h"
-// #include "./scenes/curtains.h"
-// #include "./scenes/sunRise.h"
-// #include "./scenes/pollution.h"
-// #include "./scenes/sensorTemp.h"
-
 void setup_leds()
 {
     LEDS.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS);
@@ -24,8 +18,3 @@ void setup_leds()
     FastLED.clear();
     FastLED.show();
 }
-
-// void loop_leds()
-// {
-//     openCurtains();
-// }

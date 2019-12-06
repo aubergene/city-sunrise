@@ -1,12 +1,11 @@
-#include "./scenes/helpers.h"
 #include "./scenes/curtains.h"
 #include "./scenes/sunRise.h"
 #include "./scenes/pollution.h"
-#include "./scenes/sensorTemp.h"
+#include "./scenes/temperature.h"
 #include "./scenes/seaWaves.h"
 #include "./scenes/redGreenYellow.h"
 
-#define NUM_SCENES 2
+#define NUM_SCENES 4
 
 int scene = 0;
 int prevScene = -1;
@@ -18,6 +17,8 @@ void loop_scenes()
         if (prevScene == scene)
         {
             scene++;
+            // TODO uncomment this when in prod
+            // openCurtains(); // This is blocking and returns
             if (scene >= NUM_SCENES) {
                 scene = 0;
             }
@@ -38,21 +39,23 @@ void loop_scenes()
     //     }
     // }
 
+    display.print(F("S"));
+    display.print(scene);
+    display.print(F(": "));
+
     switch (scene)
     {
     case 0:
-        display.println(F("openCurtains"));
-        // openCurtains();
-        seaWaves();
+        display.println(F("Sun Rise"));
+        sunRise(knobValue);
         break;
     case 1:
-        display.println(F("seaWaves"));
-        // seaWaves();
-        redGreenYellow();
+        display.println(F("Sea Waves"));
+        seaWaves();
         break;
     case 2:
-        display.println(F("bounceDot"));
-        // bounceDot();
+        display.println(F("Thermometer"));
+        temperature();
         break;
     case 3:
         display.println(F("redGreenYellow"));

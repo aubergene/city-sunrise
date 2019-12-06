@@ -20,7 +20,7 @@ void sunRise(int sun)
     display.print(F("maxV: "));
     display.println(maxV);
 
-    display.display();
+    // display.display();
 
     // Add to overall brightness as sunrise grows
     // const int skyBlue = 168;

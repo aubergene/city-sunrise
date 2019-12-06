@@ -31,6 +31,9 @@ Adafruit_BME680 bme; // I2C
 //Adafruit_BME680 bme(BME_CS); // hardware SPI
 //Adafruit_BME680 bme(BME_CS, BME_MOSI, BME_MISO,  BME_SCK);
 
+int bmeLastReading = 0;
+int bmeReadingInterval = 1000;
+
 void setup_bme680()
 {
   // Serial.println(F("BME680 test"));
@@ -52,22 +55,36 @@ void setup_bme680()
 
 void loop_bme680()
 {
-  if (!bme.performReading())
+  if (millis() - bmeLastReading > bmeReadingInterval)
   {
-    Serial.println("Failed to perform reading :(");
-    return;
+    if (!bme.performReading())
+    {
+      Serial.println("Failed to perform reading :(");
+      return;
+    }
+    Serial.println(bme.temperature);
+    bmeLastReading = millis();
   }
-
-  Serial.print(bme.temperature);
-  Serial.print("\t");
-  Serial.print(bme.pressure / 100.0);
-  Serial.print("\t");
-  Serial.print(bme.humidity);
-  Serial.print("\t");
-  Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
-  Serial.print("\t");
-  Serial.print(bme.gas_resistance / 1000.0);
-  Serial.println();
-
-  delay(10000);
 }
+
+// void loop_bme680()
+// {
+//   if (!bme.performReading())
+//   {
+//     Serial.println("Failed to perform reading :(");
+//     return;
+//   }
+
+//   Serial.print(bme.temperature);
+//   Serial.print("\t");
+//   Serial.print(bme.pressure / 100.0);
+//   Serial.print("\t");
+//   Serial.print(bme.humidity);
+//   Serial.print("\t");
+//   Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
+//   Serial.print("\t");
+//   Serial.print(bme.gas_resistance / 1000.0);
+//   Serial.println();
+
+//   delay(10000);
+// }

@@ -2,7 +2,7 @@ void pollution(int amount)
 {
     display.print(F("Knob value: "));
     display.println(amount);
-    display.display();
+    // display.display();
 
     fadeToBlackBy(leds, NUM_LEDS, 20);
 
