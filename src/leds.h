@@ -22,6 +22,7 @@ void setup_leds()
     LEDS.setBrightness(255);
 
     FastLED.clear();
+    FastLED.show();
 }
 
 // void loop_leds()
