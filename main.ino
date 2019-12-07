@@ -25,7 +25,6 @@ void loop()
 
     loop_button();
     loop_knob(); // get the reading from variable resistor
-    loop_bme680(); // get the reading from the sensor
     loop_scenes(); // get the reading from variable resistor
 
     // display.println(millis());
@@ -39,6 +38,4 @@ void loop()
     // display.print(F("Temp: "));
     // display.println(bme.temperature);
     display.display();
-
-    // pollution(val);
 }

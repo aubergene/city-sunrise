@@ -32,7 +32,7 @@ Adafruit_BME680 bme; // I2C
 //Adafruit_BME680 bme(BME_CS, BME_MOSI, BME_MISO,  BME_SCK);
 
 int bmeLastReading = 0;
-int bmeReadingInterval = 1000;
+int bmeReadingInterval = 5000;
 
 void setup_bme680()
 {
@@ -53,6 +53,7 @@ void setup_bme680()
   bme.setGasHeater(320, 150); // 320*C for 150 ms
 }
 
+// This is slow so just call it when needed
 void loop_bme680()
 {
   if (millis() - bmeLastReading > bmeReadingInterval)
