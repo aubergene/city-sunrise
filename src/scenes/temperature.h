@@ -15,8 +15,6 @@ const int MAX_TEMP = 32;
 
 void temperature()
 {
-    loop_bme680();
-
     display.print(F("Temperature: "));
     display.print(bme.temperature);
     display.print((char)247); // ° degree symbol
@@ -52,11 +50,9 @@ void temperature()
     }
 
     float sensorTemp;
-    bool fakeSensor = true;
 
     if (fakeSensor)
     {
-
         if (RotPosition < 0)
         {
             RotPosition = 0;

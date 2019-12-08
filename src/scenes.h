@@ -24,6 +24,7 @@ void loop_scenes()
             // openCurtains(); // This is blocking and returns
             if (scene >= NUM_SCENES) {
                 scene = 0;
+                loop_bme680(); // Read from the sensor
             }
         }
     }
@@ -51,7 +52,6 @@ void loop_scenes()
     case 0:
         display.println(F("Sun Rise"));
         sunRise();
-        // pressure();
         break;
     case 1:
         display.println(F("Thermometer"));
@@ -59,7 +59,7 @@ void loop_scenes()
         break;
     case 2:
         display.println(F("Pressure"));
-        // pressure();
+        pressure();
         break;
     case 3:
         display.println(F("Sea Waves"));

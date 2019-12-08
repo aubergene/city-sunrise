@@ -1,3 +1,5 @@
+const bool fakeSensor = true;
+
 #include "src/helpers.h"
 #include "src/button.h"
 #include "src/rotator.h"
@@ -16,6 +18,8 @@ void setup()
     setup_leds();
     setup_screen();
     setup_bme680();
+
+    loop_bme680(); // Get first reading
 }
 
 void loop()
@@ -27,19 +31,11 @@ void loop()
     loop_rotator(); // get the reading from rotator
     loop_scenes();
 
+    // display.println(millis());
+    // display.println(buttonState);
+    // display.println(scene);
     display.print("RotPosition: ");
     display.println(RotPosition);
 
-
-    // display.println(millis());
-    // display.println(knobValue);
-
-    // display.println(knobValue);
-    // display.println(buttonState);
-    // display.println(scene);
-
-    // display.println(buttonState);
-    // display.print(F("Temp: "));
-    // display.println(bme.temperature);
     display.display();
 }
