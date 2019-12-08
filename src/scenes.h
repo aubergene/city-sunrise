@@ -13,19 +13,18 @@ int prevScene = -1;
 
 void loop_scenes()
 {
+    // Advance the scene when the button is pushed
     if (buttonState == LOW)
     {
+        // Check if it's the same as prevScreen so we can't advance
+        // more than one scene from a single push
         if (prevScene == scene)
         {
             scene++;
             RotPosition = 0; // Reset the rotator for each scene
 
-            // TODO uncomment this when in prod
+            // A transition between scenes, I thought it was overbarod
             // openCurtains(); // This is blocking and returns
-            if (scene >= NUM_SCENES) {
-                scene = 0;
-                loop_bme680(); // Read from the sensor
-            }
         }
     }
     else
@@ -43,6 +42,14 @@ void loop_scenes()
     //     }
     // }
 
+    if (scene >= NUM_SCENES)
+    {
+        scene = 0;
+        // Read from the sensor, the values don't change very rapidly
+        // and the sensor is too slow (300ms+) to read in the normal loop
+        loop_bme680();
+    }
+
     display.print(scene + 1);
     display.print(F(": "));
 
@@ -50,8 +57,7 @@ void loop_scenes()
     {
     case 0:
         display.println(F("Sun Rise"));
-        // sunRise();
-        pollution();
+        sunRise();
         break;
     case 1:
         display.println(F("Temperature"));

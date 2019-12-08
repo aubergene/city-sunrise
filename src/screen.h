@@ -32,7 +32,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 void setup_screen()
 {
-     // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
+    // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
     if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))
     { // Address 0x3C for 128x32
         Serial.println(F("SSD1306 allocation failed"));
@@ -43,32 +43,40 @@ void setup_screen()
     display.setTextSize(1);              // Normal 1:1 pixel scale
     display.setTextColor(SSD1306_WHITE); // Draw white text
 
+    // Fancy intro display
+    // first blank screen
     display.clearDisplay();
     display.setCursor(0, 0); // Start at top-left corner
     display.display();
-    delay(200);
-    display.println(F("CITY SUNRISE"));
-    display.display();
 
+    if (!skipIntro)
+    {
+        delay(200);
 
-    // delay(1000);
-    // display.println();
-    // display.println(F("Julian Burgess"));
-    // display.println(F("Goldsmiths 2019"));
-    // display.display();
-    // delay(2000);
-    // display.clearDisplay();
-    // display.display();
+        // show name of project
+        // display.println(F("CITY SUNRISE"));
+        // display.display();
+
+        display.setTextSize(2); // Draw 2X-scale text
+        display.setTextColor(SSD1306_WHITE);
+        display.println(F("CITY"));
+        display.println(F("SUNRISE"));
+        display.display();
+        delay(2000);
+
+        // then my name and Goldsmiths
+        display.clearDisplay();
+        display.setCursor(0, 0); // Start at top-left corner
+        display.setTextSize(1);
+        display.println(F("CITY SUNRISE"));
+        display.println();
+        display.println(F("Julian Burgess"));
+        display.println(F("Goldsmiths 2019"));
+        display.display();
+
+        // ok clear it now and get on with the show!
+        delay(3000);
+        display.clearDisplay();
+        display.display();
+    }
 }
-
-// void loop_screen() {
-//     display.clearDisplay();
-//     display.setCursor(0, 0); // Start at top-left corner
-
-//     // display.println(millis());
-//     // display.println(buttonState);
-//     // display.print(F("Temp: "));
-//     // display.println(bme.temperature);
-
-//     display.display();
-// }

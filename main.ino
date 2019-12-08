@@ -1,4 +1,5 @@
 const bool fakeSensor = true;
+const bool skipIntro = false;
 
 #include "src/helpers.h"
 #include "src/button.h"
@@ -32,10 +33,8 @@ void loop()
     loop_scenes();
 
     // display.println(millis());
-    // display.println(buttonState);
-    // display.println(scene);
-    display.print("RotPosition: ");
-    display.println(RotPosition);
+    // display.print("RotPosition: ");
+    // display.println(RotPosition);
 
     display.display();
 }

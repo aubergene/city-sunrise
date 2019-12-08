@@ -1,6 +1,7 @@
 void openCurtains()
 {
-    int mid = NUM_LEDS / 2;
+    const int mid = (NUM_LEDS - 1) / 2;
+    const int width = 10;
 
     for (int i = 0; i < mid; i++)
     {
