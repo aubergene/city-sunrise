@@ -15,12 +15,12 @@ void pressure()
     const int MIN_ROT = -30;
     const int MAX_ROT = 30;
 
-    RotPosition = constrain(RotPosition, MIN_ROT, MAX_ROT);
+    rotPos = constrain(rotPos, MIN_ROT, MAX_ROT);
 
     // FastLED.clear();
     if (fakeSensor)
     {
-        sensorPressure = mapC(RotPosition, MIN_ROT, MAX_ROT, MIN_PRESSURE, MAX_PRESSURE);
+        sensorPressure = mapC(rotPos, MIN_ROT, MAX_ROT, MIN_PRESSURE, MAX_PRESSURE);
         display.print(F("Fake pressure: "));
         display.println(sensorPressure);
     }

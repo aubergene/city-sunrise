@@ -1,6 +1,6 @@
 // temp refers to temperature not temporary as usually the case in code
 const int tempFlashInterval = 500; // Flash interval in milliseconds
-const int tempWidth = 5;           // Width of flashing area in pixels
+const int tempWidth = 6;           // Width of flashing area in pixels
 int tempLastFlash = 0;             // Store last time flash was on
 int tempFlash = false;             // Initial value of flash
 
@@ -53,13 +53,13 @@ void temperature()
 
     if (fakeSensor)
     {
-        if (RotPosition < 0)
-        {
-            RotPosition = 0;
-        }
+        const int MIN_ROT = -10;
+        const int MAX_ROT = 40;
+
+        rotPos = constrain(rotPos, MIN_ROT, MAX_ROT);
 
         // Uncomment to use knob value instead
-        sensorTemp = mapC(RotPosition, 0, MAX_TEMP - MIN_TEMP, MIN_TEMP, MAX_TEMP);
+        sensorTemp = mapC(rotPos, MIN_ROT, MAX_ROT, MIN_TEMP, MAX_TEMP);
 
         display.print(F("Fake temp: "));
         display.print(sensorTemp);

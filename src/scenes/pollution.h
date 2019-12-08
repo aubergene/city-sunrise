@@ -18,11 +18,11 @@ void pollution()
     const int MIN_ROT = -20;
     const int MAX_ROT = 20;
 
-    RotPosition = constrain(RotPosition, MIN_ROT, MAX_ROT);
+    rotPos = constrain(rotPos, MIN_ROT, MAX_ROT);
 
     if (fakeSensor)
     {
-        sensorResistance = mapC(RotPosition, MIN_ROT, MAX_ROT, MIN_GAS_RESIST, MAX_GAS_RESIST);
+        sensorResistance = mapC(rotPos, MIN_ROT, MAX_ROT, MIN_GAS_RESIST, MAX_GAS_RESIST);
         display.print(F("Fake gas: "));
         display.println(sensorResistance);
     }

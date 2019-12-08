@@ -21,7 +21,7 @@ void loop_scenes()
         if (prevScene == scene)
         {
             scene++;
-            RotPosition = 0; // Reset the rotator for each scene
+            rotPos = 0; // Reset the rotator for each scene
 
             // A transition between scenes, I thought it was overbarod
             // openCurtains(); // This is blocking and returns

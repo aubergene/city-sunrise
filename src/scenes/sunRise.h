@@ -2,11 +2,11 @@ void sunRise()
 {
     const int mid = NUM_LEDS / 2;
 
-    if (RotPosition < 0) {
-        RotPosition = 0;
+    if (rotPos < 0) {
+        rotPos = 0;
     }
 
-    int sun = map(RotPosition, 0, mid / 2, 0, mid);
+    int sun = map(rotPos, 0, mid / 2, 0, mid);
     sun = constrain(sun, 0, mid);
 
     FastLED.clear();

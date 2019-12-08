@@ -10,12 +10,12 @@ void humidity()
     const int MIN_ROT = -30;
     const int MAX_ROT = 30;
 
-    RotPosition = constrain(RotPosition, MIN_ROT, MAX_ROT);
+    rotPos = constrain(rotPos, MIN_ROT, MAX_ROT);
     int sensorHumidity;
 
     if (fakeSensor)
     {
-        sensorHumidity = mapC(RotPosition, MIN_ROT, MAX_ROT, MIN_HUMIDITY, MAX_HUMIDITY);
+        sensorHumidity = mapC(rotPos, MIN_ROT, MAX_ROT, MIN_HUMIDITY, MAX_HUMIDITY);
         display.print(F("Fake humidity: "));
         display.print(sensorHumidity);
         display.println(F("%"));

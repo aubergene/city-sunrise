@@ -33,8 +33,8 @@ void loop()
     loop_scenes();
 
     // display.println(millis());
-    // display.print("RotPosition: ");
-    // display.println(RotPosition);
+    display.print("rotPos: ");
+    display.println(rotPos);
 
     display.display();
 }
