@@ -31,7 +31,7 @@ Adafruit_BME680 bme; // I2C
 //Adafruit_BME680 bme(BME_CS); // hardware SPI
 //Adafruit_BME680 bme(BME_CS, BME_MOSI, BME_MISO,  BME_SCK);
 
-int bmeLastReading = 0;
+int bmeLastReading = -1; // Dummy value so we can do reading before loop starts
 int bmeReadingInterval = 5000;
 
 void setup_bme680()
@@ -56,7 +56,7 @@ void setup_bme680()
 // This is slow so just call it when needed
 void loop_bme680()
 {
-  if (millis() - bmeLastReading > bmeReadingInterval)
+  if (bmeLastReading < 0 || millis() - bmeLastReading > bmeReadingInterval)
   {
     if (!bme.performReading())
     {
