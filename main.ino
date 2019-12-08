@@ -1,6 +1,6 @@
 #include "src/helpers.h"
 #include "src/button.h"
-#include "src/knob.h"
+#include "src/rotator.h"
 #include "src/bme680.h"
 #include "src/screen.h"
 #include "src/leds.h"
@@ -12,7 +12,7 @@ void setup()
     Serial.println("resetting");
 
     setup_button();
-    setup_knob();
+    setup_rotator();
     setup_leds();
     setup_screen();
     setup_bme680();
@@ -23,9 +23,13 @@ void loop()
     display.clearDisplay();
     display.setCursor(0, 0); // Start at top-left corner
 
-    loop_button();
-    loop_knob(); // get the reading from variable resistor
-    loop_scenes(); // get the reading from variable resistor
+    loop_button(); // check if button has been pressed
+    loop_rotator(); // get the reading from rotator
+    loop_scenes();
+
+    display.print("RotPosition: ");
+    display.println(RotPosition);
+
 
     // display.println(millis());
     // display.println(knobValue);

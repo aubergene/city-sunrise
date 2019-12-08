@@ -27,7 +27,7 @@
 */
 
 // constants won't change. They're used here to set pin numbers:
-const int buttonPin = 2;   // the number of the pushbutton pin
+const int buttonPin = 4;   // the number of the pushbutton pin
 
 // Variables will change:
 int buttonState;             // the current reading from the input pin
@@ -39,7 +39,7 @@ unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
 unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
 
 void setup_button() {
-  pinMode(buttonPin, INPUT);
+  pinMode(buttonPin, INPUT_PULLUP);
 }
 
 void loop_button() {

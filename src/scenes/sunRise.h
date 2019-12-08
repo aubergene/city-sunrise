@@ -1,21 +1,22 @@
-void sunRise(int sun)
+void sunRise()
 {
     const int mid = NUM_LEDS / 2;
 
-    int n = map(sun, 0, 255, 0, mid);
-    n = constrain(n, 0, mid);
+    if (RotPosition < 0) {
+        RotPosition = 0;
+    }
+
+    int sun = map(RotPosition, 0, mid / 2, 0, mid);
+    sun = constrain(sun, 0, mid);
 
     FastLED.clear();
     int h, v;
 
     // Add to overall brightness as sunrise grows
-    int maxV = map(n, 0, mid, 0, 50);
+    int maxV = map(sun, 0, mid, 0, 50);
 
     display.print(F("sun: "));
     display.println(sun);
-
-    display.print(F("n: "));
-    display.println(n);
 
     display.print(F("maxV: "));
     display.println(maxV);
@@ -31,7 +32,7 @@ void sunRise(int sun)
     //     leds[mid - i] = CHSV(skyBlue, 200, gamma8[skyV]);
     // }
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < sun; i++)
     {
         h = map(i, 0, mid, 5, 60);
         v = maxV + map(i, 0, mid, 200, 100);

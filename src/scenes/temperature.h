@@ -1,8 +1,8 @@
 // temp refers to temperature not temporary as usually the case in code
 const int tempFlashInterval = 500; // Flash interval in milliseconds
-const int tempWidth = 5; // Width of flashing area in pixels
-int tempLastFlash = 0; // Store last time flash was on
-int tempFlash = false; // Initial value of flash
+const int tempWidth = 5;           // Width of flashing area in pixels
+int tempLastFlash = 0;             // Store last time flash was on
+int tempFlash = false;             // Initial value of flash
 
 // Guessed suitable domain for outdoors values from here
 // https://en.wikipedia.org/wiki/Climate_of_London
@@ -45,15 +45,41 @@ void temperature()
     }
 
     // Use a timer to turn on/off
-    if (millis() - tempLastFlash > tempFlashInterval) {
+    if (millis() - tempLastFlash > tempFlashInterval)
+    {
         tempLastFlash = millis();
         tempFlash = !tempFlash;
     }
 
-    if (tempFlash) {
+    float sensorTemp;
+    bool fakeSensor = true;
+
+    if (fakeSensor)
+    {
+
+        if (RotPosition < 0)
+        {
+            RotPosition = 0;
+        }
+
         // Uncomment to use knob value instead
-        // int tempPos = mapC(knobValue, 0, 255, 0, NUM_LEDS - tempWidth);
-        int tempPos = mapC(bme.temperature, MIN_TEMP, MAX_TEMP, 0, NUM_LEDS - tempWidth);
+        sensorTemp = mapC(RotPosition, 0, MAX_TEMP - MIN_TEMP, MIN_TEMP, MAX_TEMP);
+
+        display.print(F("Fake temp: "));
+        display.print(sensorTemp);
+        display.print((char)247); // ° degree symbol
+        display.println(F("C"));
+    }
+    else
+    {
+        // Use BME temperature sensor
+        sensorTemp = bme.temperature;
+    }
+
+    if (tempFlash)
+    {
+        int tempPos = mapC(sensorTemp, MIN_TEMP, MAX_TEMP, 0, NUM_LEDS - tempWidth);
+
         for (int i = 0; i < tempWidth; i++)
         {
             leds[tempPos + i] = CRGB::Black;
