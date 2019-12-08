@@ -15,7 +15,7 @@ const int MAX_TEMP = 32;
 
 void temperature()
 {
-    display.print(F("Temperature: "));
+    display.print(F("Sensor temp: "));
     display.print(bme.temperature);
     display.print((char)247); // ° degree symbol
     display.println(F("C"));

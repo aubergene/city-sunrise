@@ -2,8 +2,8 @@
 #include "./scenes/sunRise.h"
 #include "./scenes/temperature.h"
 #include "./scenes/pressure.h"
+#include "./scenes/humidity.h"
 #include "./scenes/pollution.h"
-#include "./scenes/seaWaves.h"
 #include "./scenes/redGreenYellow.h"
 
 #define NUM_SCENES 5
@@ -43,18 +43,18 @@ void loop_scenes()
     //     }
     // }
 
-    display.print(F("S"));
-    display.print(scene);
+    display.print(scene + 1);
     display.print(F(": "));
 
     switch (scene)
     {
     case 0:
         display.println(F("Sun Rise"));
-        sunRise();
+        // sunRise();
+        pollution();
         break;
     case 1:
-        display.println(F("Thermometer"));
+        display.println(F("Temperature"));
         temperature();
         break;
     case 2:
@@ -62,12 +62,12 @@ void loop_scenes()
         pressure();
         break;
     case 3:
-        display.println(F("Sea Waves"));
-        seaWaves();
+        display.println(F("Humidity"));
+        humidity();
         break;
     case 4:
-        display.println(F("redGreenYellow"));
-        redGreenYellow();
+        display.println(F("Pollution (VOC)"));
+        pollution();
         break;
     }
 }

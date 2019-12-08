@@ -32,7 +32,7 @@ Adafruit_BME680 bme; // I2C
 //Adafruit_BME680 bme(BME_CS, BME_MOSI, BME_MISO,  BME_SCK);
 
 int bmeLastReading = -1; // Dummy value so we can do reading before loop starts
-int bmeReadingInterval = 5000;
+int bmeReadingInterval = 1000;
 
 void setup_bme680()
 {
