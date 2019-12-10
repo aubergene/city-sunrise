@@ -1,3 +1,5 @@
+// This was an early scene which I didn't end up using
+
 void redGreenYellow()
 {
     FastLED.clear();

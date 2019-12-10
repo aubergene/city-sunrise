@@ -1,3 +1,6 @@
+// I made this so I could log out readings from the BME680 over serial
+// and write them to a TSV file for later analysis
+
 const SerialPort = require("serialport");
 const Readline = require("@serialport/parser-readline");
 
