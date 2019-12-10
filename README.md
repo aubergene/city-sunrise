@@ -54,8 +54,6 @@ I also pasted code into my project in the following files and adapted as needed.
 - `src/gamma8.h` - found in FastLED examples
 - `src/button.h` - adapted from http://www.arduino.cc/en/Tutorial/Debounce
 - `src/bme680.h` - adapted Adafruit BME680 example
-- `src/`
-- `src/`
 
 ## Notes
 
