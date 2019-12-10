@@ -1,3 +1,9 @@
+#define NUM_SCENES 5
+
+int scene = 0;
+int prevScene = -1;
+int sceneStartMillis;
+
 #include "./scenes/curtains.h"
 #include "./scenes/sunRise.h"
 #include "./scenes/temperature.h"
@@ -5,11 +11,6 @@
 #include "./scenes/humidity.h"
 #include "./scenes/pollution.h"
 #include "./scenes/redGreenYellow.h"
-
-#define NUM_SCENES 5
-
-int scene = 0;
-int prevScene = -1;
 
 void loop_scenes()
 {
@@ -21,6 +22,7 @@ void loop_scenes()
         if (prevScene == scene)
         {
             scene++;
+            sceneStartMillis = millis();
             rotPos = 0; // Reset the rotator for each scene
 
             // A transition between scenes, I thought it was overbarod

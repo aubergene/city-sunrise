@@ -21,6 +21,7 @@ void setup()
     setup_bme680();
 
     loop_bme680(); // Get first reading
+    sceneStartMillis = millis();
 }
 
 void loop()

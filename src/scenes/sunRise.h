@@ -1,43 +1,43 @@
+const int SUNRISE = 60 * 1000;  // length of sunrise in ms
+const int SUNRISE_STEPS = 1000; // how many steps to take
+
 void sunRise()
 {
     const int mid = NUM_LEDS / 2;
 
-    if (rotPos < 0) {
+    if (rotPos < 0)
+    {
         rotPos = 0;
     }
 
-    int sun = map(rotPos, 0, mid / 2, 0, mid);
-    sun = constrain(sun, 0, mid);
+    int sceneMillis = millis() - sceneStartMillis;
+    int sunrise = mapC(sceneMillis, 0, SUNRISE, 0, SUNRISE_STEPS);
 
     FastLED.clear();
+
+    display.print(F("sunrise: "));
+    display.println(sunrise);
+
+    int minV = mapC(sunrise, 0, SUNRISE_STEPS * 0.6, 40, 110);
+    int maxV = mapC(sunrise, 100, SUNRISE_STEPS, 50, 210);
+
+    int hueV = mapC(sunrise, 0, SUNRISE_STEPS * 0.8, 0, 60);
+
+    // display.print(F("minV: "));
+    // display.print(minV);
+    // display.print(F(" maxV: "));
+    // display.print(maxV);
+    // display.print(F(" hueV: "));
+    // display.println(hueV);
+
     int h, v;
 
-    // Add to overall brightness as sunrise grows
-    int maxV = map(sun, 0, mid, 0, 50);
-
-    display.print(F("sun: "));
-    display.println(sun);
-
-    display.print(F("maxV: "));
-    display.println(maxV);
-
-    // display.display();
-
-    // Add to overall brightness as sunrise grows
-    // const int skyBlue = 168;
-    // int skyV = map(n, 0, mid, 150, 0);
-
-    // for (int i = 0; i < mid; i++) {
-    //     leds[mid + i] = CHSV(skyBlue, 200, gamma8[skyV]);
-    //     leds[mid - i] = CHSV(skyBlue, 200, gamma8[skyV]);
-    // }
-
-    for (int i = 0; i < sun; i++)
+    for (int i = 0; i < mid; i++)
     {
-        h = map(i, 0, mid, 5, 60);
-        v = maxV + map(i, 0, mid, 200, 100);
-        leds[mid - i] += CHSV(h, 200, gamma8[v]);
-        leds[mid + i] += CHSV(h, 200, gamma8[v]);
+        h = map(i, 0, mid, hueV, 0);
+        v = mapC(i, 0, mid, maxV, minV);
+        leds[mid - i] = CHSV(h, 200, gamma8[v]);
+        leds[mid + i] = CHSV(h, 200, gamma8[v]);
     }
 
     FastLED.show();
