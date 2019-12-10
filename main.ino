@@ -1,4 +1,4 @@
-const bool fakeSensor = true;
+const bool fakeSensor = false;
 const bool skipIntro = false;
 
 #include "src/helpers.h"
@@ -29,13 +29,16 @@ void loop()
     display.clearDisplay();
     display.setCursor(0, 0); // Start at top-left corner
 
-    loop_button(); // check if button has been pressed
+    loop_button();  // check if button has been pressed
     loop_rotator(); // get the reading from rotator
     loop_scenes();
 
     // display.println(millis());
-    display.print("rotPos: ");
-    display.println(rotPos);
+    if (fakeSensor)
+    {
+        display.print("rotPos: ");
+        display.println(rotPos);
+    }
 
     display.display();
 }
