@@ -29,6 +29,13 @@ Overall I'm really happy with the outcome and I would really like to continue to
 * [Fritzing diagram of circuit](images/city-sunrise_v1.png) (later I changed to use a rotator switch which I was unable to find in Fritzing so I still show the variable resistor)
 * [Video of City Sunrise in situ](https://youtu.be/tv7C-W1Er1U)
 
+## Plans for developerment
+
+- Add rain sensor YL38
+- Add realtime clock HW-84
+- Create C++ class to track average sensor values over time
+- Switch to WiFi enabled board and connect to web APIs to get weather data and forecasts
+
 
 ## Parts list
 
