@@ -1,4 +1,4 @@
-const bool fakeSensor = false;
+const bool fakeSensor = true;
 const bool skipIntro = false;
 
 #include "src/helpers.h"
