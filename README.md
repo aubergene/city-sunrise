@@ -26,8 +26,11 @@ I learned that powering so many LEDs at maximum is a big technical challenge in 
 
 Overall I'm really happy with the outcome and I would really like to continue to work on it and perhaps overcome some of the limitations I reached.
 
+[![City Sunrise](images/video-placeholder.png)](https://vimeo.com/379264886)
+
+## Wiring Diagram
+
 * [Fritzing diagram of circuit](images/city-sunrise_v1.png) (later I changed to use a rotator switch which I was unable to find in Fritzing so I still show the variable resistor)
-* [Video of City Sunrise in situ](https://youtu.be/tv7C-W1Er1U)
 
 ## Plans for developerment
 
